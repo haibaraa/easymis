@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.m.dao.LoginLogMapper">
+	<resultMap type="org.m.domain.LoginLog" id="BaseResultMap">
+		<id property="id" column="id" jdbcType="BIGINT" />
+		<result property="userId" column="user_id" jdbcType="VARCHAR" />
+		<result property="ip" column="ip" jdbcType="VARCHAR" />
+		<result property="loginDate" column="login_date" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<insert id="insertLoginLog" parameterType="org.m.domain.LoginLog">
+		insert into login_log(user_id, ip, login_date) values (#{userId,jdbcType=BIGINT}, #{ip,jdbcType=VARCHAR}, #{loginDate,jdbcType=TIMESTAMP})
+	</insert>
+</mapper>

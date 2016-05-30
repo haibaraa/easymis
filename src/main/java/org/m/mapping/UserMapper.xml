@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.m.dao.UserMapper">
+	<resultMap type="org.m.domain.User" id="BaseResultMap">
+		<id property="id" column="id" jdbcType="BIGINT" />
+		<result property="email" column="email" jdbcType="VARCHAR" />
+		<result property="password" column="password" jdbcType="VARCHAR" />
+		<result property="name" column="name" jdbcType="VARCHAR" />
+		<result property="lastVisit" column="last_visit" jdbcType="TIMESTAMP" />
+		<result property="lastIp" column="last_ip" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="BaseColumn">
+		id,email,name,last_visit,last_ip
+	</sql>
+	
+	<select id="getMatchCount" resultType="int">
+		select count(id) from user where email = #{0} and password = #{1}
+	</select>
+	
+	<select id="findUserByEmail" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select <include refid="BaseColumn" /> from user where email = #{email,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="getUser" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select <include refid="BaseColumn" /> from user where id = #{id,jdbcType=BIGINT}
+	</select>
+	
+	<update id="updateLoginInfo" parameterType="org.m.domain.User">
+		update user 
+		set last_visit = #{lastVisit,jdbcType=TIMESTAMP}, 
+			last_ip = #{lastIp,jdbcType=VARCHAR} 
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+</mapper>
