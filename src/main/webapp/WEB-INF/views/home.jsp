@@ -10,5 +10,8 @@
 <body>
 	<h1>Home Page</h1>
 	<div>${msg }</div>
+	<ul>
+		<li><a href="login.html">Login</a></li>
+	</ul>
 </body>
 </html>

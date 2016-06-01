@@ -13,6 +13,7 @@
   	<org.springframework-version>3.2.9.RELEASE</org.springframework-version>
   	<mybatis-version>3.2.8</mybatis-version>
   	<mybatis-spring-version>1.1.1</mybatis-spring-version>
+  	<log4j-version>1.2.17</log4j-version>
   </properties>
   
   <dependencies>
@@ -83,8 +84,33 @@
 		<artifactId>mybatis-spring</artifactId>
 		<version>${mybatis-spring-version}</version>
 	</dependency>
+	<!-- Log4j -->
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>${log4j-version}</version>
+	</dependency>
+	<!-- <dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-log4j12</artifactId>
+	    <version>1.7.21</version>
+	</dependency> -->
   </dependencies>
   <build>
     <finalName>easymis</finalName>
+    <plugins>
+    	<plugin>
+    		<groupId>org.apache.maven.plugins</groupId>
+    		<artifactId>maven-surefire-plugin</artifactId>
+    		<configuration>
+    			<testFailureIgnore>true</testFailureIgnore>
+    		</configuration>
+    	</plugin>
+    	<plugin>
+    		<groupId>org.apache.tomcat.maven</groupId>
+    		<artifactId>tomcat7-maven-plugin</artifactId>
+    		<version>2.2</version>
+    	</plugin>
+    </plugins>
   </build>
 </project>

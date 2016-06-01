@@ -16,7 +16,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class UserDAOTest {
 
 	@Autowired
-	private UserDAO userDAO;
+	//private UserDAO userDAO;
+	private UserMapper userDAO;
 	
 	@Test
 	public void getMatchCount() {
