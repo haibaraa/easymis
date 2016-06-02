@@ -51,4 +51,17 @@
 	</bean>
 	
 	<!-- TODO: TransactionManager -->
+	
+	<!-- TimeProfiler -->
+	<bean id="profilerInterceptor" class="org.m.utils.MethodProfileInterceptor"></bean>
+	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<value>*Service,*DAO,*Mapper</value>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>profilerInterceptor</value>
+			</list>
+		</property>
+	</bean>
 </beans>
